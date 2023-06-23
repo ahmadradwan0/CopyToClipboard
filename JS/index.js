@@ -1,19 +1,14 @@
 $(document).ready(function($) {
-    function add() {
-      $(".copied").addClass("bounce-effect");
-    }
+    var $textField = $("#textField");
   
-    function remove() {
-      $(".copied").removeClass("bounce-effect");
-    }
-  
-    // Call function and copy text
-    $(".copy-btn").click(function() {
-      $("#textField").select();
+    // Copy text and display message
+    $(document).on("click", ".copy-btn", function() {
+      $textField.select();
       document.execCommand("copy");
-      add();
-      setTimeout(remove, 800);
-    //   alert($("#textField").val()); // Display the text in an alert message
+      $(".copied").toggleClass("bounce-effect");
+      setTimeout(function() {
+        $(".copied").toggleClass("bounce-effect");
+      }, 800);
+      
     });
   });
-  
